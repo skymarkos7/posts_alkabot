@@ -13,7 +13,7 @@
       />
     </i>
 
-    <div v-if="!carregando">
+    <div class="row justify-around items-center" v-if="!carregando">
     <div v-for="(user, index) in users" :key="index">
       <div class="q-pa-md">
         <q-card class="card-user col-auto">

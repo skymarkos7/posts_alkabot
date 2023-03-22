@@ -82,6 +82,13 @@ const linksList = [
     icon: 'star',
     link: '#/favorites',
     target:"_self"
+  },
+  {
+    title: 'Buscar',
+    caption: 'Busque por conteúdo específico',
+    icon: 'search',
+    link: '#/favorites',
+    target:"_self"
   }
 ]
 
