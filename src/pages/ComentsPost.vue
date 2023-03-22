@@ -1,34 +1,8 @@
 <template>
   <q-page>
-    <h4>Página de posts</h4>
+    <h4>Página de comentários</h4>
 
-    <div>
-      <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
-        <q-circular-progress
-          indeterminate
-          size="45px"
-          :thickness="1"
-          color="grey-8"
-          track-color="lime"
-          class="q-ma-md"
-      />
-    </i>
-      <ul v-if="!carregando">
-        <div class="posts-container">
-          <div v-for="(post, index) in posts" :key="index" class="post-card">
-            <div class="post-details">
-              
-              <h5 class="post-title">{{ post.title }}</h5>
-              <p class="post-by">Post {{ post.id }}</p>
-              <p class="post-body">{{ post.body }}</p>
-              <a :href="url"><button class="read-more-link">comentários
-                <q-icon name="chat" color="white" size="1.5em" />
-              </button></a>
-            </div>
-          </div>
-        </div>
-      </ul>
-    </div>
+
   </q-page>
 </template>
 
@@ -40,16 +14,16 @@ import { useStore } from "vuex";
 
 export default defineComponent({
   name: "PostsPage",
+  props:['id'],
   data() {
     return {
       posts: [],
-      carregando: false,
-      url:''
+      carregando: false
     };
   },
   methods: {
     loadData() {
-      const url = `https://jsonplaceholder.typicode.com/posts`;
+      const url = `https://jsonplaceholder.typicode.com/posts/2/comments`;
       this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
       api
         .get(url, {
@@ -65,13 +39,11 @@ export default defineComponent({
         .finally(() => {
           this.carregando = false; // definir carregando como falso após a chamada da API
         });
-
-        this.url = `#/posts`;
     },
   },
   mounted: function () {
     // if (this.$route.query.payment_id) {
-    //   this.payment_id = this.$route.query.payment_id;
+    //   this.payment_id = this.$route.query.payment_id;    // capturar info do post
     //   // window.location();
     // } else {
     //   window.location.href = '/';

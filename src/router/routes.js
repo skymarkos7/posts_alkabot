@@ -9,7 +9,8 @@ const routes = [
       { path: '/perfil', component: () => import('pages/PerfilPage.vue') },
       { path: '/favorites', component: () => import('pages/FavoritePage.vue') },
       { path: '/users', component: () => import('pages/UsersPage.vue') },
-      { path: '/details', component: () => import('pages/DetailsUser.vue') }
+      { path: '/details', component: () => import('pages/DetailsUser.vue') },
+      { path: '/coments/:id', component: () => import('pages/ComentsPost.vue') }
     ]
   },
 

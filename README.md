@@ -1,8 +1,13 @@
 # Quasar App (posts-alkabot)
 
 Um projeto avaliativo:
- - Base: Vue
+ - Tecnologias:
+    - Base: Vue
     - framework: Quasar
+ - Idioma:
+    - Código em inglês
+    - Conteúdo da página em português
+    - Comentários português
 
 ### **Comandos para rodar projeto localmente:**
 

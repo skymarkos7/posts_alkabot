@@ -80,7 +80,7 @@ export default defineComponent({
     };
   },
   methods: {
-    outra() {
+    loadData() {
       const url = `https://jsonplaceholder.typicode.com/users`;
       this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
       api
@@ -107,7 +107,7 @@ export default defineComponent({
     //   window.location.href = '/';
     // }
 
-    this.outra();
+    this.loadData();
   },
 });
 </script>
