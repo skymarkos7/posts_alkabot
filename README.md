@@ -32,3 +32,15 @@ yarn quasar dev
 ```bash
 quasar build
 ```
+
+
+
+
+
+# Telas
+## Posts
+ - Exibindo posts em um card
+ - Botão para mostrar comentários daquele post
+
+ ## Usuários
+  - Mostrando todas as infos de um usuário no mesmo card

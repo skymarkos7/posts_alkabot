@@ -30,31 +30,36 @@
       </ul>
     </div> -->
     <div v-for="(user, index) in users" :key="index">
-      <div class="q-pa-md">
+      <div class="q-pa-md justify-center">
         <q-card class="card-user">
           <q-card-section>
             <div class="text-h6">{{user.name}}</div>
-            <div class="text-subtitle2">{{user.email}}</div>
+            <div class="text-subtitle2">id: {{user.id}}</div>
+            <div class="text-subtitle2">username: {{user.username}}</div>
+            <div class="text-subtitle2">E-mail: {{user.email}}</div>
+            <div class="text-subtitle2">Telefone: {{user.phone}}</div>
+            <div class="text-subtitle2">Website: {{user.website}}</div>
           </q-card-section>
 
           <q-tabs v-model="tab" class="text-teal">
-            <q-tab label="Tab one" name="one" />
-            <q-tab label="Tab two" name="two" />
+            <q-tab label="Endereço" name="endereco" />
+            <q-tab label="Empresa" name="Empresa" />
           </q-tabs>
 
           <q-separator />
 
           <q-tab-panels v-model="tab" animated>
-            <q-tab-panel name="one">
-              The QCard component is a great way to display important pieces of
-              grouped content.
+            <q-tab-panel name="endereco">
+              <p>Cidade: {{user.address.city}}</p>
+              <p>Rua: {{user.address.street}}</p>
+              <p>Suíte: {{user.address.suite}}</p>
+              <p>Código Postal: {{user.address.zipcode}}</p>
             </q-tab-panel>
 
-            <q-tab-panel name="two">
-              With so much content to display at once, and often so little
-              screen real-estate, Cards have fast become the design pattern of
-              choice for many companies, including the likes of Google and
-              Twitter.
+            <q-tab-panel name="Empresa">
+              <p class="text-subtitle2">{{user.company.name}}</p>
+              <p>Bs: {{user.company.bs}}</p>
+              <p>catchPhrase: {{user.company.catchPhrase}}</p>
             </q-tab-panel>
           </q-tab-panels>
         </q-card>
