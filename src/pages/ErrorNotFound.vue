@@ -6,8 +6,9 @@
       </div>
 
       <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+        Oops. Não tem nada aqui...
       </div>
+      <h5><br>Verifique a rota digitada</h5>
 
       <q-btn
         class="q-mt-xl"
@@ -15,7 +16,7 @@
         text-color="blue"
         unelevated
         to="/"
-        label="Go Home"
+        label="Voltar"
         no-caps
       />
     </div>

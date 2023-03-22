@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <h1>Pagina de início</h1>
+    <p>Página de Favoritos</p>
   </q-page>
 </template>
 
@@ -8,6 +8,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'IndexPage'
+  name: 'FavoritePage'
 })
 </script>
