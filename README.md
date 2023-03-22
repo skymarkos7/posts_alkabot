@@ -4,49 +4,31 @@ Um projeto avaliativo:
  - Base: Vue
     - framework: Quasar
 
-## Rodar projeto localmente:
+### **Comandos para rodar projeto localmente:**
 
 ### Clonar projeto
 ```bash
-yarn
-# or
-npm install
+git clone https://github.com/skymarkos7/posts_alkabot.git
 ```
 
-### Install the dependencies
+### Instalar as dependencias
 ```bash
 yarn
 # or
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Rodar o projeto (Certifique-se de estar na pasta do projeto antes de rodar)
 ```bash
 quasar dev
-```
-
-
-### Lint the files
-```bash
-yarn lint
 # or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
+npx quasar dev
 # or
-npm run format
+yarn quasar dev
 ```
 
 
-
-### Build the app for production
+### Build o app para produção
 ```bash
 quasar build
 ```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
