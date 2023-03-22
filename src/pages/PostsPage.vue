@@ -18,9 +18,11 @@
           <div v-for="(post, index) in posts" :key="index" class="post-card">
             <div class="post-details">
               <h5 class="post-title">{{ post.title }}</h5>
-              <p class="post-by">{{ post.id }}</p>
+              <p class="post-by">Post {{ post.id }}</p>
               <p class="post-body">{{ post.body }}</p>
-              <button href="/coments" class="read-more-link">Ver comentários</button>
+              <button href="/coments" class="read-more-link">comentários
+                <q-icon name="chat" color="white" size="1.5em" />
+              </button>
             </div>
           </div>
         </div>

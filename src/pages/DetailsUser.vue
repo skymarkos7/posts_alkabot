@@ -18,7 +18,7 @@
       <div class="q-pa-md">
         <q-card class="card-user col-auto">
           <q-card-section>
-            <q-btn class="float-right" >
+            <q-btn to="#/perfil" class="float-right" >
               <q-icon name="open_in_full" color="teal" size="1em" />
             </q-btn>
             <div class="text-h6">{{user.name}}</div>
@@ -67,7 +67,7 @@ import { ref, onMounted, watch, toRefs, nextTick, computed } from "vue"; // Usan
 import { useStore } from "vuex";
 
 export default defineComponent({
-  name: "UsersPage",
+  name: "DetailsUser",
   data() {
     return {
       users: [],
