@@ -2,23 +2,40 @@
   <q-page >
     <h4>Página de usuários</h4>
 
+    <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
+        <q-circular-progress
+          indeterminate
+          size="45px"
+          :thickness="1"
+          color="grey-8"
+          track-color="lime"
+          class="q-ma-md"
+      />
+    </i>
 
+    <div v-if="!carregando">
     <div v-for="(user, index) in users" :key="index">
       <div class="q-pa-md">
         <q-card class="card-user col-auto">
           <q-card-section>
+            <q-btn class="float-right" >
+              <q-icon name="open_in_full" color="teal" size="1em" />
+            </q-btn>
             <div class="text-h6">{{user.name}}</div>
             <div class="text-subtitle2">id: {{user.id}}</div>
             <div class="text-subtitle2">username: {{user.username}}</div>
             <div class="text-subtitle2">E-mail: {{user.email}}</div>
             <div class="text-subtitle2">Telefone: {{user.phone}}</div>
             <div class="text-subtitle2">Website: {{user.website}}</div>
+
           </q-card-section>
 
           <q-tabs v-model="tab" class="text-teal">
             <q-tab label="Endereço" :name="user.name" />
             <q-tab label="Empresa" :name="user.id" />
+
           </q-tabs>
+
 
           <q-separator />
 
@@ -39,6 +56,7 @@
         </q-card>
       </div>
     </div>
+  </div>
   </q-page>
 </template>
 

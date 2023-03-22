@@ -40,7 +40,7 @@ export default defineComponent({
   data() {
     return {
       posts: [],
-      carregando: false,
+      carregando: false
     };
   },
   methods: {
