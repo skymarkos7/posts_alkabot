@@ -1,108 +1,137 @@
 <template>
   <q-page>
     <h4>Página de posts</h4>
-    <button @click="apiCompleta">api completa</button>
-    <button @click="apiPequena">api pequena</button>
-    <button @click="outra">outra</button>
 
+    <div>
+      <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
+        <q-circular-progress
+          indeterminate
+          size="45px"
+          :thickness="1"
+          color="grey-8"
+          track-color="lime"
+          class="q-ma-md"
+      />
+    </i>
+      <ul v-if="!carregando">
+        <div class="posts-container">
+          <div v-for="(post, index) in posts" :key="index" class="post-card">
+            <div class="post-details">
+              <h3 class="post-title">{{ post.title }}</h3>
+              <p class="post-date">{{ post.id }}</p>
+              <p class="post-excerpt">{{ post.body }}</p>
+              <button class="read-more-link">Leia Mais</button>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import { api } from '../boot/axios';
-import { ref, onMounted, watch, toRefs, nextTick, computed } from 'vue';
-import { useStore } from 'vuex';
+import { defineComponent } from "vue";
+import { api } from "../boot/axios";
+import { ref, onMounted, watch, toRefs, nextTick, computed } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
-  name: 'PostsPage',
-  data () {
+  name: "PostsPage",
+  data() {
     return {
-
-    }
+      posts: [],
+      carregando: false,
+    };
   },
   methods: {
-    apiCompleta() {
-
-        get
-          .get('https://jsonplaceholder.typicode.com/posts', {
-            // headers: {
-            //   jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkxMy5zbGljZS5nbG9iYWwiLCJpYXQiOjE2NzAwMDE3MjUsImV4cCI6MTY3MDAwODkyNSwiaWQxIjoiVVV0WSIsImlkMiI6Ik1qZE1UZz09In0.-Pj1PqMrA28rHVMKYVGG2ycMdnaSuknO-bESSU56JK4"
-            // }
-          })
-          .then((response) => {
-            // this.match = response.data.data.match;
-            console.log(response);
-
-          });
-    },
-
     outra() {
       const url = `https://jsonplaceholder.typicode.com/posts`;
+      this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
       api
         .get(url, {
-          // headers: {
+          // headers: {  // Caso haja autenticação na chamada
           //   jwt: this.$store.state.session.jwt
           // }
         })
         .then((response) => {
-          console.log(response);
-          if (response.data.data.status_external) {
-            this.check_identificar_recused = true;
-            this.check_aprovar_recused = true;
-            this.tab = 'Aprovar';
-            this.btnReprobate = false;
-            this.btnApprove = false;
-            this.TabApproved = false;
-            this.TxtApproved = false;
-            this.TxtRefused = false;
-            this.Refused = true;
-            this.TitleApprove = false;
-            // this.StatusPaymnt = 'aprovado';
-          } else {
-            this.tab = 'Aprovar';
-            this.value = response.data.data.value;
-            this.installments = response.data.data.installments;
-            // this.StatusPayment = 'recusado';
+          console.log(response.data);
 
-            let string = response.data.data.value_code;
-            let metade = Math.floor(string.length / 2);
-            this.value_code_formatted =
-              string.substr(0, metade) + ',' + string.substr(metade);
-
-            this.market = response.data.data.market;
-            this.check_identificar_approved = true;
-            this.btnReprobate = true;
-            this.btnApprove = true;
-            this.TxtApproved = false;
-            this.TxtARefused = false;
-          }
-          //console.log(response.data);
+          this.posts = response.data;
+        })
+        .finally(() => {
+          this.carregando = false; // definir carregando como falso após a chamada da API
         });
     },
+  },
+  mounted: function () {
+    // if (this.$route.query.payment_id) {
+    //   this.payment_id = this.$route.query.payment_id;
+    //   // window.location();
+    // } else {
+    //   window.location.href = '/';
+    // }
 
-
-
-    async apiPequena () {
-      $q.loading.show();
-
-      try {
-        const response = await api.get(`https://jsonplaceholder.typicode.com/posts`, {
-          // headers: {
-          //   jwt: jwt.value
-          // }
-        });
-
-        console.log(response);
-      } catch (e) {
-        console.log('error', e);
-      } finally {
-        $q.loading.hide();
-      }
-    }
-
-
-
-  }
-})
+    this.outra();
+  },
+});
 </script>
+
+
+
+
+<style lang="scss" scoped>
+// SCOPED permite aplicar estilisação nesta únicapágina
+.posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.post-card {
+  width: 300px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.post-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.post-details {
+  padding: 20px;
+}
+
+.post-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.post-date {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.post-excerpt {
+  margin-bottom: 20px;
+}
+
+.read-more-link {
+  display: inline-block;
+  padding: 10px;
+  background-color: #0084ff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+</style>
+
+
+
+
+
+
