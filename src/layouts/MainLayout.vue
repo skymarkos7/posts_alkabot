@@ -63,6 +63,13 @@ const linksList = [
     target:"_self"
   },
   {
+    title: 'Usuários',
+    caption: 'Listagem de usuários',
+    icon: 'group',
+    href: '#/users',
+    target:"_self"
+  },
+  {
     title: 'Posts',
     caption: 'Posts e comentários',
     icon: 'chat',

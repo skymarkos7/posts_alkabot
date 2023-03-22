@@ -17,10 +17,10 @@
         <div class="posts-container">
           <div v-for="(post, index) in posts" :key="index" class="post-card">
             <div class="post-details">
-              <h3 class="post-title">{{ post.title }}</h3>
-              <p class="post-date">{{ post.id }}</p>
-              <p class="post-excerpt">{{ post.body }}</p>
-              <button class="read-more-link">Leia Mais</button>
+              <h5 class="post-title">{{ post.title }}</h5>
+              <p class="post-by">{{ post.id }}</p>
+              <p class="post-body">{{ post.body }}</p>
+              <button href="/coments" class="read-more-link">Ver comentários</button>
             </div>
           </div>
         </div>
@@ -111,12 +111,12 @@ export default defineComponent({
   margin-bottom: 10px;
 }
 
-.post-date {
+.post-by {
   color: #666;
   margin-bottom: 10px;
 }
 
-.post-excerpt {
+.post-body {
   margin-bottom: 20px;
 }
 
