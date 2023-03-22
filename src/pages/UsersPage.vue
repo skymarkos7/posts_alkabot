@@ -1,37 +1,11 @@
 <template>
-  <q-page>
+  <q-page >
     <h4>Página de usuários</h4>
 
-    <!-- <div>
-      <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
-        <q-circular-progress
-          indeterminate
-          size="45px"
-          :thickness="1"
-          color="grey-8"
-          track-color="lime"
-          class="q-ma-md"
-        />
-      </i>
-      <ul v-if="!carregando">
-        <div class="users-container">
-          <div v-for="(user, index) in users" :key="index" class="user-card">
-            <div class="user-details">
-              <h5 class="user-title">{{ user.name }}</h5>
-              <p class="user-by">{{ user.id }}</p>
-              <p class="user-by">E-mail: {{ user.email }}</p>
-              <p class="user-body">{{ user.body }}</p>
-              <button href="/coments" class="read-more-link">
-                Ver comentários
-              </button>
-            </div>
-          </div>
-        </div>
-      </ul>
-    </div> -->
+
     <div v-for="(user, index) in users" :key="index">
-      <div class="q-pa-md justify-center">
-        <q-card class="card-user">
+      <div class="q-pa-md">
+        <q-card class="card-user col-auto">
           <q-card-section>
             <div class="text-h6">{{user.name}}</div>
             <div class="text-subtitle2">id: {{user.id}}</div>
@@ -42,21 +16,21 @@
           </q-card-section>
 
           <q-tabs v-model="tab" class="text-teal">
-            <q-tab label="Endereço" name="endereco" />
-            <q-tab label="Empresa" name="Empresa" />
+            <q-tab label="Endereço" :name="user.name" />
+            <q-tab label="Empresa" :name="user.id" />
           </q-tabs>
 
           <q-separator />
 
           <q-tab-panels v-model="tab" animated>
-            <q-tab-panel name="endereco">
+            <q-tab-panel :name="user.name">
               <p>Cidade: {{user.address.city}}</p>
               <p>Rua: {{user.address.street}}</p>
               <p>Suíte: {{user.address.suite}}</p>
               <p>Código Postal: {{user.address.zipcode}}</p>
             </q-tab-panel>
 
-            <q-tab-panel name="Empresa">
+            <q-tab-panel :name="user.id">
               <p class="text-subtitle2">{{user.company.name}}</p>
               <p>Bs: {{user.company.bs}}</p>
               <p>catchPhrase: {{user.company.catchPhrase}}</p>

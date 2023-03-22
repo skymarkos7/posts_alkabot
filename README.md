@@ -39,6 +39,7 @@ quasar build
 
 # Telas
 ## Posts
+ - Icone de carregamente enquanto busca posts
  - Exibindo posts em um card
  - Botão para mostrar comentários daquele post
 
