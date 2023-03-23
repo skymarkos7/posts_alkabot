@@ -2,7 +2,26 @@
   <q-page>
     <h4>Página de comentários</h4>
 
+    <div>
+      <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
+        <q-circular-progress
+          indeterminate
+          size="45px"
+          :thickness="1"
+          color="grey-8"
+          track-color="lime"
+          class="q-ma-md"
+        />
+      </i>
 
+
+      <div v-if="!carregando" class="q-pa-md row justify-center">
+        <div v-for="(comment, index) in comments" :key="index" style="width: 100%; max-width: 800px">
+          <q-chat-message :name="'Autor: '+ comment.name" :text="[comment.body]" />
+          <!-- <q-chat-message name="Jane" :text="['doing fine, how r you?']" /> -->
+        </div>
+      </div>
+    </div>
   </q-page>
 </template>
 
@@ -14,18 +33,17 @@ import { useStore } from "vuex";
 
 export default defineComponent({
   name: "PostsPage",
-  props:['id'],
+  props: ["id"],
   data() {
     return {
       comments: [],
-      carregando: false
+      carregando: false,
     };
   },
   methods: {
     loadData() {
-
       console.log(this.$route.params.id);
-      let id = this.$route.params.id;  // Pegando o id do post pela url
+      let id = this.$route.params.id; // Pegando o id do post pela url
 
       const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
       this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
@@ -46,14 +64,14 @@ export default defineComponent({
     },
   },
   mounted: function () {
-      // if (this.$route.query.payment_id) {
-      // this.payment_id = this.$route.query.payment_id;    // capturar info do post
-      // window.location();
-      // } else {
+    // if (this.$route.query.payment_id) {
+    // this.payment_id = this.$route.query.payment_id;    // capturar info do post
+    // window.location();
+    // } else {
 
-      // window.location.href = '/';
-      // this.$route.query.payment_id
-      // }
+    // window.location.href = '/';
+    // this.$route.query.payment_id
+    // }
 
     this.loadData();
   },
