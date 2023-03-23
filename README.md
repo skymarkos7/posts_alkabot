@@ -5,6 +5,7 @@
     - Base: Vue
     - Framework: Quasar
     - Api: Axios
+    - Icones: Google Fonts
   - Idioma:
     - Código em inglês
     - Conteúdo da página em português

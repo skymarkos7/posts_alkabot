@@ -15,10 +15,10 @@
           Posts alkabot
         </q-toolbar-title>
 
-        <div>José freire</div>
+        <a target='_blank' style="text-decoration:none; color: aliceblue;" href="https://www.linkedin.com/in/skymarkos7/"><div>Marcos Lourenço</div></a>
       </q-toolbar>
     </q-header>
-
+s
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
