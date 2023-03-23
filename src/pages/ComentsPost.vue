@@ -17,13 +17,17 @@ export default defineComponent({
   props:['id'],
   data() {
     return {
-      posts: [],
+      comments: [],
       carregando: false
     };
   },
   methods: {
     loadData() {
-      const url = `https://jsonplaceholder.typicode.com/posts/2/comments`;
+
+      console.log(this.$route.params.id);
+      let id = this.$route.params.id;  // Pegando o id do post pela url
+
+      const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
       this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
       api
         .get(url, {
@@ -34,7 +38,7 @@ export default defineComponent({
         .then((response) => {
           console.log(response.data);
 
-          this.posts = response.data;
+          this.comments = response.data;
         })
         .finally(() => {
           this.carregando = false; // definir carregando como falso após a chamada da API
@@ -42,12 +46,14 @@ export default defineComponent({
     },
   },
   mounted: function () {
-    // if (this.$route.query.payment_id) {
-    //   this.payment_id = this.$route.query.payment_id;    // capturar info do post
-    //   // window.location();
-    // } else {
-    //   window.location.href = '/';
-    // }
+      // if (this.$route.query.payment_id) {
+      // this.payment_id = this.$route.query.payment_id;    // capturar info do post
+      // window.location();
+      // } else {
+
+      // window.location.href = '/';
+      // this.$route.query.payment_id
+      // }
 
     this.loadData();
   },

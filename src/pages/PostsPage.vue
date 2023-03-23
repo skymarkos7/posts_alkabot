@@ -17,11 +17,11 @@
         <div class="posts-container">
           <div v-for="(post, index) in posts" :key="index" class="post-card">
             <div class="post-details">
-              
+
               <h5 class="post-title">{{ post.title }}</h5>
               <p class="post-by">Post {{ post.id }}</p>
               <p class="post-body">{{ post.body }}</p>
-              <a :href="url"><button class="read-more-link">comentários
+              <a :href="url"><button @click="goComents(post.id)" class="read-more-link">comentários    <!-- Passa para a função o id do post escolhido-->
                 <q-icon name="chat" color="white" size="1.5em" />
               </button></a>
             </div>
@@ -66,8 +66,13 @@ export default defineComponent({
           this.carregando = false; // definir carregando como falso após a chamada da API
         });
 
-        this.url = `#/posts`;
+
     },
+
+    goComents(id) {
+      this.url = `#/coments/${id}`;  // Recebe o id e o agrega na url que será chamada
+    },
+
   },
   mounted: function () {
     // if (this.$route.query.payment_id) {
