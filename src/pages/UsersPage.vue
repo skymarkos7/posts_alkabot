@@ -18,14 +18,16 @@
       <div class="q-pa-md">
         <q-card class="card-user col-auto">
           <q-card-section>
-            <q-btn class="float-right" >
+
+            <a :href="url"><q-btn @click="goUser(user.id)" class="float-right" >
               <q-icon name="open_in_full" color="teal" size="1em" />
-            </q-btn>
+            </q-btn></a>
+
             <div class="text-h6">{{user.name}}</div>
-            <div class="text-subtitle2">Usuário {{user.id}}</div>
-            <div class="text-subtitle2">username: {{user.username}}</div>
-            <div class="text-subtitle2">E-mail: {{user.email}}</div>
-            <div class="text-subtitle2">Telefone: {{user.phone}}</div>
+            <div class="text-subtitle3">Usuário {{user.id}}</div>
+            <div class="text-subtitle3">username: {{user.username}}</div>
+            <div class="text-subtitle3">E-mail: {{user.email}}</div>
+            <div class="text-subtitle3">Telefone: {{user.phone}}</div>
             <div class="text-subtitle2">Website: {{user.website}}</div>
 
           </q-card-section>
@@ -72,6 +74,7 @@ export default defineComponent({
     return {
       users: [],
       carregando: false,
+      url: ''
     };
   },
   setup() {
@@ -97,10 +100,13 @@ export default defineComponent({
         .finally(() => {
           this.carregando = false; // definir carregando como falso após a chamada da API
         });
-
-
-        
     },
+
+    goUser(id) {
+      this.url = `#/details/${id}`; // Recebe o id e o agrega na url que será chamada
+
+
+    }
   },
   mounted: function () {
     // if (this.$route.query.payment_id) {

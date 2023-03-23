@@ -1,62 +1,48 @@
 <template>
-  <q-page >
-    <h4>Página de usuários</h4>
+  <q-page>
+    <h4>Página de detalhes de um usuário</h4>
 
     <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
-        <q-circular-progress
-          indeterminate
-          size="45px"
-          :thickness="1"
-          color="grey-8"
-          track-color="lime"
-          class="q-ma-md"
+      <q-circular-progress
+        indeterminate
+        size="45px"
+        :thickness="1"
+        color="grey-8"
+        track-color="lime"
+        class="q-ma-md"
       />
     </i>
 
     <div class="row justify-around items-center" v-if="!carregando">
-    <div v-for="(user, index) in users" :key="index">
-      <div class="q-pa-md">
-        <q-card class="card-user col-auto">
-          <q-card-section>
-            <q-btn to="#/perfil" class="float-right" >
-              <q-icon name="open_in_full" color="teal" size="1em" />
-            </q-btn>
-            <div class="text-h6">{{user.name}}</div>
-            <div class="text-subtitle2">Usuário {{user.id}}</div>
-            <div class="text-subtitle2">username: {{user.username}}</div>
-            <div class="text-subtitle2">E-mail: {{user.email}}</div>
-            <div class="text-subtitle2">Telefone: {{user.phone}}</div>
-            <div class="text-subtitle2">Website: {{user.website}}</div>
 
-          </q-card-section>
+      <div class="posts-container ">
+          <div style="width: 100%; max-width: 700px" class="post-card">
+            <div class="post-details">
+              <h5 class="post-title">{{ users.name }}
+                <q-icon name="person" color="teal" size="8em" />
+              </h5>
+              <p class="post-by">
+                usuário: {{ users.id }}
+              </p>
+              <p class="post-body">{{ users.username }}</p>
+              <p class="post-body">{{ users.email }}</p>
+              <p class="post-body">{{ users.phone }}</p>
+              <p class="post-body">{{ users.website }}</p>
+              <p class="post-body">{{ address.city }}</p>
+              <p class="post-body">{{ address.suite }}</p>
+              <p class="post-body">{{ address.city }}</p>
+              <p class="post-body">{{ address.zipcode }}</p>
+              <p class="post-body">{{ address.geo }}</p>
+              <p class="post-body">{{ company.name }}</p>
+              <p class="post-body">{{ company.bs }}</p>
+              <p class="post-body">{{ company.catchPhrase }}</p>
 
-          <q-tabs v-model="tab" class="text-teal">
-            <q-tab label="Endereço" :name="user.name" />
-            <q-tab label="Empresa" :name="user.id" />
 
-          </q-tabs>
+            </div>
+          </div>
+        </div>
 
-
-          <q-separator />
-
-          <q-tab-panels v-model="tab" animated>
-            <q-tab-panel :name="user.name">
-              <p>Cidade: {{user.address.city}}</p>
-              <p>Rua: {{user.address.street}}</p>
-              <p>Suíte: {{user.address.suite}}</p>
-              <p>Código Postal: {{user.address.zipcode}}</p>
-            </q-tab-panel>
-
-            <q-tab-panel :name="user.id">
-              <p class="text-subtitle2">{{user.company.name}}</p>
-              <p>Bs: {{user.company.bs}}</p>
-              <p>catchPhrase: {{user.company.catchPhrase}}</p>
-            </q-tab-panel>
-          </q-tab-panels>
-        </q-card>
-      </div>
     </div>
-  </div>
   </q-page>
 </template>
 
@@ -71,6 +57,8 @@ export default defineComponent({
   data() {
     return {
       users: [],
+      address: '',
+      company: '',
       carregando: false,
     };
   },
@@ -81,7 +69,8 @@ export default defineComponent({
   },
   methods: {
     loadData() {
-      const url = `https://jsonplaceholder.typicode.com/users`;
+      let id = this.$route.params.id;
+      const url = `https://jsonplaceholder.typicode.com/users/${id}`;
       this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
       api
         .get(url, {
@@ -92,7 +81,9 @@ export default defineComponent({
         .then((response) => {
           console.log(response.data);
 
-          this.users = response.data;
+          this.users   = response.data;
+          this.address = response.data.address;
+          this.company = response.data.company;
         })
         .finally(() => {
           this.carregando = false; // definir carregando como falso após a chamada da API

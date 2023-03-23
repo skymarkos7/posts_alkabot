@@ -1,18 +1,21 @@
 # Quasar App (posts-alkabot)
 
 **Um projeto avaliativo:**
- - Tecnologias:
+  - Tecnologias:
     - Base: Vue
     - Framework: Quasar
     - Api: Axios
- - Idioma:
+  - Idioma:
     - Código em inglês
     - Conteúdo da página em português
     - Comentários português
- - Características:
+  - Características:
     - Responsivo
     - Tela de carregamento enquando obtem resposta
     - passando id por url
+  - Versionamento:
+    - Commits feito em uma branch de desenvolvimento chamada develop
+    - Merge com a master ao final do desenvolvimento
 
 ### **Comandos para rodar projeto localmente:**
 
