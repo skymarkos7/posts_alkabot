@@ -1,13 +1,18 @@
 # Quasar App (posts-alkabot)
 
-Um projeto avaliativo:
+**Um projeto avaliativo:**
  - Tecnologias:
     - Base: Vue
-    - framework: Quasar
+    - Framework: Quasar
+    - Api: Axios
  - Idioma:
     - Código em inglês
     - Conteúdo da página em português
     - Comentários português
+ - Características:
+    - Responsivo
+    - Tela de carregamento enquando obtem resposta
+    - passando id por url
 
 ### **Comandos para rodar projeto localmente:**
 
@@ -16,7 +21,7 @@ Um projeto avaliativo:
 git clone https://github.com/skymarkos7/posts_alkabot.git
 ```
 
-### Instalar as dependencias
+### Instalar dependencias
 ```bash
 yarn
 # or
@@ -44,9 +49,11 @@ quasar build
 
 # Telas
 ## Posts
- - Icone de carregamente enquanto busca posts
  - Exibindo posts em um card
- - Botão para mostrar comentários daquele post
+ - Botão para mostrar o post selecionado e seus comentários
 
+ ## Comentários
+  - Exibe o post e seus comentários
  ## Usuários
   - Mostrando todas as infos de um usuário no mesmo card
+  - Duas abas selecionáveis para separar dados de ENDEREÇO ou EMPRESA

@@ -14,10 +14,24 @@
         />
       </i>
 
-
       <div v-if="!carregando" class="q-pa-md row justify-center">
-        <div v-for="(comment, index) in comments" :key="index" style="width: 100%; max-width: 800px">
-          <q-chat-message :name="'Autor: '+ comment.name" :text="[comment.body]" />
+        <div style="width: 100%; max-width: 800px" class="post-card ">
+        <div class="post-details">
+          <h5 class="post-title">{{ posts.title }}</h5>
+          <p class="post-by">Post {{ posts.id }}</p>
+          <p class="post-body">{{ posts.body }}</p>
+        </div>
+      </div>
+        <div
+          v-for="(comment, index) in comments"
+          :key="index"
+          style="width: 100%; max-width: 800px"
+        >
+          <q-chat-message
+            :name="'Autor: ' + comment.name"
+            :stamp=" 'E-mail: '+ comment.email"
+            :text="[comment.body]"
+          />
           <!-- <q-chat-message name="Jane" :text="['doing fine, how r you?']" /> -->
         </div>
       </div>
@@ -37,12 +51,13 @@ export default defineComponent({
   data() {
     return {
       comments: [],
+      posts: [],
       carregando: false,
     };
   },
   methods: {
     loadData() {
-      console.log(this.$route.params.id);
+      // console.log(this.$route.params.id);
       let id = this.$route.params.id; // Pegando o id do post pela url
 
       const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
@@ -54,9 +69,21 @@ export default defineComponent({
           // }
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
 
           this.comments = response.data;
+        });
+
+      api
+        .get(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+          // headers: {  // Caso haja autenticação na chamada
+          //   jwt: this.$store.state.session.jwt
+          // }
+        })
+        .then((response) => {
+          console.log("post", response.data);
+
+          this.posts = response.data;
         })
         .finally(() => {
           this.carregando = false; // definir carregando como falso após a chamada da API
