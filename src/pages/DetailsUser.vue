@@ -1,6 +1,8 @@
 <template>
   <q-page>
-    <h4>Página de detalhes de um usuário</h4>
+    <h4>Página para detalhes de um usuário</h4>
+
+    <a href="#/users" style="text-decoration: none;"><q-btn style="margin-left: 20px; background: #FF0080; color: white" icon="arrow_back" label="Voltar" /></a>
 
     <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
       <q-circular-progress
@@ -18,24 +20,60 @@
       <div class="posts-container ">
           <div style="width: 100%; max-width: 700px" class="post-card">
             <div class="post-details">
-              <h5 class="post-title">{{ users.name }}
+              <h5 class="post-title">{{ users.name }} -
+                {{ users.username }}
                 <q-icon name="person" color="teal" size="8em" />
               </h5>
+
               <p class="post-by">
+                <q-icon name="tag" color="teal" size="2em" />
                 usuário: {{ users.id }}
               </p>
-              <p class="post-body">{{ users.username }}</p>
-              <p class="post-body">{{ users.email }}</p>
-              <p class="post-body">{{ users.phone }}</p>
-              <p class="post-body">{{ users.website }}</p>
-              <p class="post-body">{{ address.city }}</p>
-              <p class="post-body">{{ address.suite }}</p>
-              <p class="post-body">{{ address.city }}</p>
-              <p class="post-body">{{ address.zipcode }}</p>
-              <p class="post-body">{{ address.geo }}</p>
-              <p class="post-body">{{ company.name }}</p>
-              <p class="post-body">{{ company.bs }}</p>
-              <p class="post-body">{{ company.catchPhrase }}</p>
+              <p class="post-body">
+                <q-icon name="mail" color="teal" size="2em" />
+                {{ users.email }}
+              </p>
+              <p class="post-body">
+                <q-icon name="phone" color="teal" size="2em" />
+                {{ users.phone }}
+              </p>
+              <p class="post-body">
+                <q-icon name="public" color="teal" size="2em" />
+                {{ users.website }}
+              </p>
+              <p class="post-body">
+                <q-icon name="location_on" color="teal" size="2em" />
+                {{ address.city }}
+              </p>
+              <p class="post-body">
+                <q-icon name="house" color="teal" size="2em" />
+                {{ address.suite }}
+              </p>
+              <p class="post-body">
+                <q-icon name="map" color="teal" size="2em" />
+                {{ address.city }}
+              </p>
+              <p class="post-body">
+                <q-icon name="apartment" color="teal" size="2em" />
+                {{ company.name }}
+              </p>
+              <p class="post-body">
+                <q-icon name="business_center" color="teal" size="2em" />
+                {{ company.bs }}
+              </p>
+              <p class="post-body">
+                <q-icon name="business_center" color="teal" size="2em" />
+                {{ company.catchPhrase }}
+              </p>
+              <p class="post-body">
+                <q-icon name="flag" color="teal" size="2em" />
+                Código Postal: {{ address.zipcode }}
+              </p>
+              <p class="post-body">
+                <q-icon name="location_searching" color="teal" size="2em" />
+                {{ address.geo }}
+              </p>
+
 
 
             </div>

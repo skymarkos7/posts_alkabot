@@ -2,6 +2,8 @@
   <q-page>
     <h4>Página de comentários</h4>
 
+    <a href="#/posts" style="text-decoration: none;"><q-btn style="margin-left: 20px; background: #FF0080; color: white" icon="arrow_back" label="Voltar" /></a>
+
     <div>
       <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
         <q-circular-progress
