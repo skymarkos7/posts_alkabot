@@ -22,7 +22,7 @@
       </i>
 
       <div v-if="!carregando" class="q-pa-md row justify-center">
-        <div style="width: 100%; max-width: 800px" class="post-card">
+        <div style="width: 100%; max-width: 800px" class="post-card postp">
           <div class="post-details">
             <h5 class="post-title">{{ posts.title }}</h5>
             <p class="post-by">Post {{ posts.id }}</p>
@@ -117,6 +117,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 // SCOPED permite aplicar estilisação nesta únicapágina
+.postp{
+  border-radius: 15px;
+  background: #f5f5f5;
+  box-shadow:  31px 31px 62px #d0d0d0,
+              -31px -31px 62px #ffffff;
+}
 .posts-container {
   display: flex;
   flex-wrap: wrap;

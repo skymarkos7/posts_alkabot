@@ -167,6 +167,7 @@ export default defineComponent({
   box-shadow: 20px 20px 60px #c9c9ca, -20px -20px 60px #ffffff;
 
   margin-bottom: 50px;
+  padding: 10px;
 }
 .card-user {
   width: 100%;
