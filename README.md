@@ -6,6 +6,7 @@
     - Framework: Quasar
     - Api: Axios
     - Icones: Google Fonts
+    - Notificação de visitantes: Telegram
   - Idioma:
     - Código em inglês
     - Conteúdo da página em português

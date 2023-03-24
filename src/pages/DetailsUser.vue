@@ -102,8 +102,7 @@
 <script>
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
-import { ref, onMounted, watch, toRefs, nextTick, computed } from "vue"; // Usando apenas REF por enquanto
-import { useStore } from "vuex";
+import { ref } from "vue"; // Usando apenas REF por enquanto
 
 export default defineComponent({
   name: "DetailsUser",
