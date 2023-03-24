@@ -14,8 +14,9 @@
     </i>
 
     <div class="row justify-around items-center" v-if="!carregando">
+      <div class="fa fa-spinner fa-spin flex flex-center" style="width: 100%;">
       <q-input
-        style="max-width:600px; width: 50%;"
+        style="max-width:600px; width: 50%; margin-bottom: 30px;"
         v-model="search"
         filled
         rounded
@@ -25,8 +26,9 @@
           <q-icon name="search" />
         </template>
       </q-input>
+    </div>
 
-      <div v-for="(user, index) in users" :key="index">
+      <div v-for="(user, index) in filteredUsers" :key="index">
         <div class="q-pa-md">
           <q-card
             style="
@@ -90,7 +92,8 @@ export default defineComponent({
     return {
       users: [],
       carregando: false,
-      url: "",
+      url: '',
+      search: ''
     };
   },
   setup() {
@@ -104,7 +107,7 @@ export default defineComponent({
       this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
       api
         .get(url, {
-          // headers: {  // Caso haja autenticação na chamada
+          // headers: {  // Caso houvesse autenticação na chamada
           //   jwt: this.$store.state.session.jwt
           // }
         })
@@ -132,6 +135,11 @@ export default defineComponent({
 
     this.loadData();
   },
+  computed:{
+    filteredUsers() {
+      return this.users.filter(user => user.name.toLowerCase().includes(this.search.toLowerCase()))  // Filtrar posts pelo título
+    }
+  }
 });
 </script>
 

@@ -17,7 +17,7 @@
       <div class="fa fa-spinner fa-spin flex flex-center" v-if="!carregando">
 
         <q-input
-        style="max-width:600px; width: 50%;"
+        style="max-width:600px; width: 50%; margin-bottom: 30px;"
         v-model="search"
         filled
         rounded
@@ -30,8 +30,7 @@
 
         <div class="posts-container">
           <div
-            v-for="(post, index) in filteredPost"
-            :key="index"
+            v-for="(post, index) in filteredPost"  :key="index"
             style="width: 100%; max-width: 700px"
             class="post-card"
           >
@@ -110,7 +109,7 @@ export default defineComponent({
   },
   computed:{
     filteredPost() {
-      return this.posts.filter(post => post.title.includes(this.search))  // Filtrar posts pelo título
+      return this.posts.filter(post => post.title.toLowerCase().includes(this.search.toLowerCase()))  // Filtrar posts pelo título
     }
   }
 });
