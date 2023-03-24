@@ -56,13 +56,6 @@ const linksList = [
     target:"_self"
   },
   {
-    title: 'Perfil',
-    caption: 'Informações sobre seu perfil',
-    icon: 'face',
-    href: '#/perfil',
-    target:"_self"
-  },
-  {
     title: 'Usuários',
     caption: 'Listagem de usuários',
     icon: 'group',
