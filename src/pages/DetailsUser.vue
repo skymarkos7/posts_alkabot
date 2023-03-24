@@ -17,8 +17,8 @@
 
     <div class="row justify-around items-center" v-if="!carregando">
 
-      <div class="posts-container ">
-          <div style="width: 100%; max-width: 700px" class="post-card">
+      <div class="posts-container userdetails">
+          <div style="width: 100%; max-width: 800px" class="post-card">
             <div class="post-details">
               <h5 class="post-title">{{ users.name }} -
                 {{ users.username }}
@@ -146,7 +146,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 // SCOPED permite aplicar estilisação nesta únicapágina
-
+.userdetails{
+  border-radius: 50px;
+background: #ededee;
+box-shadow:  20px 20px 60px #c9c9ca,
+             -20px -20px 60px #ffffff;
+}
 .card-user {
   width: 100%;
   max-width: 250px;

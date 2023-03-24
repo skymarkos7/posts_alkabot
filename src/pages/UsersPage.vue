@@ -15,8 +15,8 @@
 
     <div class="row justify-around items-center" v-if="!carregando">
     <div v-for="(user, index) in users" :key="index">
-      <div class="q-pa-md">
-        <q-card class="card-user col-auto">
+      <div  class="q-pa-md">
+        <q-card style="background-color: #f4f8f9; min-width:300px; min-height:250px;" class="card-user col-auto">
           <q-card-section>
 
             <a :href="url"><q-btn @click="goUser(user.id)" class="float-right" >

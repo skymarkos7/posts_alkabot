@@ -20,11 +20,12 @@
     </q-header>
 s
     <q-drawer
+    style="background-color: #f5f5f5;"
       v-model="leftDrawerOpen"
       show-if-above
       bordered
     >
-      <q-list>
+      <q-list >
         <!-- <q-item-label
           header
         >
@@ -32,6 +33,7 @@ s
         </q-item-label> -->
 
         <EssentialLink
+
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
@@ -105,3 +107,9 @@ export default defineComponent({
   }
 })
 </script>
+
+<style>
+body{
+  background-color:#f1f4f6 ;
+}
+</style>

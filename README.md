@@ -14,6 +14,7 @@
     - Responsivo
     - Tela de carregamento enquando obtem resposta
     - passando id por url
+    - Tecnica de neumorphism básico na tela *detalhes de um usuário* fazendo o card flutuar
   - Versionamento:
     - Commits feito em uma branch de desenvolvimento chamada develop
     - Merge com a master ao final do desenvolvimento
