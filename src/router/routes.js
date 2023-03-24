@@ -1,24 +1,29 @@
-
 const routes = [
   {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    path: "/",
+    component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: '/posts', component: () => import('pages/PostsPage.vue') },
-      { path: '/favorites', component: () => import('pages/FavoritePage.vue') },
-      { path: '/users', component: () => import('pages/UsersPage.vue') },
-      { path: '/details/:id', component: () => import('pages/DetailsUser.vue') },
-      { path: '/coments/:id', component: () => import('pages/ComentsPost.vue') }
-    ]
+      { path: "", component: () => import("pages/IndexPage.vue") },
+      { path: "/posts", component: () => import("pages/PostsPage.vue") },
+      { path: "/favorites", component: () => import("pages/FavoritePage.vue") },
+      { path: "/users", component: () => import("pages/UsersPage.vue") },
+      {
+        path: "/details/:id",
+        component: () => import("pages/DetailsUser.vue"),
+      },
+      {
+        path: "/coments/:id",
+        component: () => import("pages/ComentsPost.vue"),
+      },
+    ],
   },
 
   // Always leave this as last one,
   // but you can also remove it
   {
-    path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue')
-  }
-]
+    path: "/:catchAll(.*)*",
+    component: () => import("pages/ErrorNotFound.vue"),
+  },
+];
 
-export default routes
+export default routes;

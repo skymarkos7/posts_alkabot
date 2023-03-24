@@ -2,7 +2,12 @@
   <q-page>
     <h4>Página para detalhes de um usuário</h4>
 
-    <a href="#/users" style="text-decoration: none;"><q-btn style="margin-left: 20px; background: #FF0080; color: white" icon="arrow_back" label="Voltar" /></a>
+    <a href="#/users" style="text-decoration: none"
+      ><q-btn
+        style="margin-left: 20px; background: #ff0080; color: white"
+        icon="arrow_back"
+        label="Voltar"
+    /></a>
 
     <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
       <q-circular-progress
@@ -16,70 +21,80 @@
     </i>
 
     <div class="row justify-around items-center" v-if="!carregando">
-
       <div class="posts-container userdetails">
-          <div style="width: 100%; max-width: 800px" class="post-card">
-            <div class="post-details">
-              <h5 class="post-title">{{ users.name }} -
-                {{ users.username }}
-                <q-icon name="person" color="teal" size="8em" />
-              </h5>
+        <div style="width: 100%; max-width: 800px" class="post-card">
+          <div class="post-details">
+            <h5 class="post-title">
+              {{ users.name }} -
+              {{ users.username }}
+              <q-icon name="person" color="teal" size="8em" />
+            </h5>
 
-              <p class="post-by">
-                <q-icon name="tag" color="teal" size="2em" />
-                usuário: {{ users.id }}
-              </p>
+            <p class="post-by">
+              <q-icon name="tag" color="teal" size="2em" />
+              usuário: {{ users.id }}
+            </p>
+            <a
+              style="text-decoration: none; color: black"
+              :href="'mailto:' + users.email"
+              >.<br />
               <p class="post-body">
                 <q-icon name="mail" color="teal" size="2em" />
                 {{ users.email }}
               </p>
-              <p class="post-body">
+            </a>
+            <a
+              style="text-decoration: none; color: black"
+              :href="'tel:' + users.phone"
+              ><p class="post-body">
                 <q-icon name="phone" color="teal" size="2em" />
                 {{ users.phone }}
-              </p>
-              <p class="post-body">
+              </p></a
+            >
+            <a
+              style="text-decoration: none; color: black"
+              target="_blank"
+              :href="'https://www.' + users.website"
+              ><p class="post-body">
                 <q-icon name="public" color="teal" size="2em" />
                 {{ users.website }}
-              </p>
-              <p class="post-body">
-                <q-icon name="location_on" color="teal" size="2em" />
-                {{ address.city }}
-              </p>
-              <p class="post-body">
-                <q-icon name="house" color="teal" size="2em" />
-                {{ address.suite }}
-              </p>
-              <p class="post-body">
-                <q-icon name="map" color="teal" size="2em" />
-                {{ address.city }}
-              </p>
-              <p class="post-body">
-                <q-icon name="apartment" color="teal" size="2em" />
-                {{ company.name }}
-              </p>
-              <p class="post-body">
-                <q-icon name="business_center" color="teal" size="2em" />
-                {{ company.bs }}
-              </p>
-              <p class="post-body">
-                <q-icon name="business_center" color="teal" size="2em" />
-                {{ company.catchPhrase }}
-              </p>
-              <p class="post-body">
-                <q-icon name="flag" color="teal" size="2em" />
-                Código Postal: {{ address.zipcode }}
-              </p>
-              <p class="post-body">
-                <q-icon name="location_searching" color="teal" size="2em" />
-                {{ address.geo }}
-              </p>
-
-
-
-            </div>
+              </p></a
+            >
+            <p class="post-body">
+              <q-icon name="location_on" color="teal" size="2em" />
+              {{ address.city }}
+            </p>
+            <p class="post-body">
+              <q-icon name="house" color="teal" size="2em" />
+              {{ address.suite }}
+            </p>
+            <p class="post-body">
+              <q-icon name="map" color="teal" size="2em" />
+              {{ address.city }}
+            </p>
+            <p class="post-body">
+              <q-icon name="apartment" color="teal" size="2em" />
+              {{ company.name }}
+            </p>
+            <p class="post-body">
+              <q-icon name="business_center" color="teal" size="2em" />
+              {{ company.bs }}
+            </p>
+            <p class="post-body">
+              <q-icon name="business_center" color="teal" size="2em" />
+              {{ company.catchPhrase }}
+            </p>
+            <p class="post-body">
+              <q-icon name="flag" color="teal" size="2em" />
+              Código Postal: {{ address.zipcode }}
+            </p>
+            <p class="post-body">
+              <q-icon name="location_searching" color="teal" size="2em" />
+              {{ address.geo }}
+            </p>
           </div>
         </div>
-
+      </div>
     </div>
   </q-page>
 </template>
@@ -95,8 +110,8 @@ export default defineComponent({
   data() {
     return {
       users: [],
-      address: '',
-      company: '',
+      address: "",
+      company: "",
       carregando: false,
     };
   },
@@ -119,7 +134,7 @@ export default defineComponent({
         .then((response) => {
           console.log(response.data);
 
-          this.users   = response.data;
+          this.users = response.data;
           this.address = response.data.address;
           this.company = response.data.company;
         })
@@ -146,11 +161,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 // SCOPED permite aplicar estilisação nesta únicapágina
-.userdetails{
+.userdetails {
   border-radius: 50px;
-background: #ededee;
-box-shadow:  20px 20px 60px #c9c9ca,
-             -20px -20px 60px #ffffff;
+  background: #ededee;
+  box-shadow: 20px 20px 60px #c9c9ca, -20px -20px 60px #ffffff;
+
+  margin-bottom: 50px;
 }
 .card-user {
   width: 100%;

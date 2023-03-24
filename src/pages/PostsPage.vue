@@ -15,7 +15,12 @@
       </i>
       <ul v-if="!carregando">
         <div class="posts-container">
-          <div v-for="(post, index) in posts" :key="index" style="width: 100%; max-width: 700px" class="post-card">
+          <div
+            v-for="(post, index) in posts"
+            :key="index"
+            style="width: 100%; max-width: 700px"
+            class="post-card"
+          >
             <div class="post-details">
               <h5 class="post-title">{{ post.title }}</h5>
               <p class="post-by">Post {{ post.id }}</p>

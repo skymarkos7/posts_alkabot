@@ -2,7 +2,12 @@
   <q-page>
     <h4>Página de comentários</h4>
 
-    <a href="#/posts" style="text-decoration: none;"><q-btn style="margin-left: 20px; background: #FF0080; color: white" icon="arrow_back" label="Voltar" /></a>
+    <a href="#/posts" style="text-decoration: none"
+      ><q-btn
+        style="margin-left: 20px; background: #ff0080; color: white"
+        icon="arrow_back"
+        label="Voltar"
+    /></a>
 
     <div>
       <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
@@ -17,13 +22,13 @@
       </i>
 
       <div v-if="!carregando" class="q-pa-md row justify-center">
-        <div style="width: 100%; max-width: 800px" class="post-card ">
-        <div class="post-details">
-          <h5 class="post-title">{{ posts.title }}</h5>
-          <p class="post-by">Post {{ posts.id }}</p>
-          <p class="post-body">{{ posts.body }}</p>
+        <div style="width: 100%; max-width: 800px" class="post-card">
+          <div class="post-details">
+            <h5 class="post-title">{{ posts.title }}</h5>
+            <p class="post-by">Post {{ posts.id }}</p>
+            <p class="post-body">{{ posts.body }}</p>
+          </div>
         </div>
-      </div>
         <div
           v-for="(comment, index) in comments"
           :key="index"
@@ -31,7 +36,7 @@
         >
           <q-chat-message
             :name="'Autor: ' + comment.name"
-            :stamp=" 'E-mail: '+ comment.email"
+            :stamp="'E-mail: ' + comment.email"
             :text="[comment.body]"
           />
           <!-- <q-chat-message name="Jane" :text="['doing fine, how r you?']" /> -->

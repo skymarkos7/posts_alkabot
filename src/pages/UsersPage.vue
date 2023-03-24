@@ -1,64 +1,68 @@
 <template>
-  <q-page >
+  <q-page>
     <h4>Página de usuários</h4>
 
     <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
-        <q-circular-progress
-          indeterminate
-          size="45px"
-          :thickness="1"
-          color="grey-8"
-          track-color="lime"
-          class="q-ma-md"
+      <q-circular-progress
+        indeterminate
+        size="45px"
+        :thickness="1"
+        color="grey-8"
+        track-color="lime"
+        class="q-ma-md"
       />
     </i>
 
     <div class="row justify-around items-center" v-if="!carregando">
-    <div v-for="(user, index) in users" :key="index">
-      <div  class="q-pa-md">
-        <q-card style="background-color: #f4f8f9; min-width:300px; min-height:250px;" class="card-user col-auto">
-          <q-card-section>
+      <div v-for="(user, index) in users" :key="index">
+        <div class="q-pa-md">
+          <q-card
+            style="
+              background-color: #f4f8f9;
+              min-width: 300px;
+              min-height: 250px;
+            "
+            class="card-user col-auto"
+          >
+            <q-card-section>
+              <a :href="url"
+                ><q-btn @click="goUser(user.id)" class="float-right">
+                  <q-icon name="open_in_full" color="teal" size="1em" /> </q-btn
+              ></a>
 
-            <a :href="url"><q-btn @click="goUser(user.id)" class="float-right" >
-              <q-icon name="open_in_full" color="teal" size="1em" />
-            </q-btn></a>
+              <div class="text-h6">{{ user.name }}</div>
+              <div class="text-subtitle3">Usuário {{ user.id }}</div>
+              <div class="text-subtitle3">username: {{ user.username }}</div>
+              <div class="text-subtitle3">E-mail: {{ user.email }}</div>
+              <div class="text-subtitle3">Telefone: {{ user.phone }}</div>
+              <div class="text-subtitle2">Website: {{ user.website }}</div>
+            </q-card-section>
 
-            <div class="text-h6">{{user.name}}</div>
-            <div class="text-subtitle3">Usuário {{user.id}}</div>
-            <div class="text-subtitle3">username: {{user.username}}</div>
-            <div class="text-subtitle3">E-mail: {{user.email}}</div>
-            <div class="text-subtitle3">Telefone: {{user.phone}}</div>
-            <div class="text-subtitle2">Website: {{user.website}}</div>
+            <q-tabs v-model="tab" class="text-teal">
+              <q-tab label="Endereço" :name="user.name" />
+              <q-tab label="Empresa" :name="user.id" />
+            </q-tabs>
 
-          </q-card-section>
+            <q-separator />
 
-          <q-tabs v-model="tab" class="text-teal">
-            <q-tab label="Endereço" :name="user.name" />
-            <q-tab label="Empresa" :name="user.id" />
+            <q-tab-panels v-model="tab" animated>
+              <q-tab-panel :name="user.name">
+                <p>Cidade: {{ user.address.city }}</p>
+                <p>Rua: {{ user.address.street }}</p>
+                <p>Suíte: {{ user.address.suite }}</p>
+                <p>Código Postal: {{ user.address.zipcode }}</p>
+              </q-tab-panel>
 
-          </q-tabs>
-
-
-          <q-separator />
-
-          <q-tab-panels v-model="tab" animated>
-            <q-tab-panel :name="user.name">
-              <p>Cidade: {{user.address.city}}</p>
-              <p>Rua: {{user.address.street}}</p>
-              <p>Suíte: {{user.address.suite}}</p>
-              <p>Código Postal: {{user.address.zipcode}}</p>
-            </q-tab-panel>
-
-            <q-tab-panel :name="user.id">
-              <p class="text-subtitle2">{{user.company.name}}</p>
-              <p>Bs: {{user.company.bs}}</p>
-              <p>catchPhrase: {{user.company.catchPhrase}}</p>
-            </q-tab-panel>
-          </q-tab-panels>
-        </q-card>
+              <q-tab-panel :name="user.id">
+                <p class="text-subtitle2">{{ user.company.name }}</p>
+                <p>Bs: {{ user.company.bs }}</p>
+                <p>catchPhrase: {{ user.company.catchPhrase }}</p>
+              </q-tab-panel>
+            </q-tab-panels>
+          </q-card>
+        </div>
       </div>
     </div>
-  </div>
   </q-page>
 </template>
 
@@ -74,7 +78,7 @@ export default defineComponent({
     return {
       users: [],
       carregando: false,
-      url: ''
+      url: "",
     };
   },
   setup() {
@@ -104,9 +108,7 @@ export default defineComponent({
 
     goUser(id) {
       this.url = `#/details/${id}`; // Recebe o id e o agrega na url que será chamada
-
-
-    }
+    },
   },
   mounted: function () {
     // if (this.$route.query.payment_id) {
