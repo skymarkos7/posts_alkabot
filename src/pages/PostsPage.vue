@@ -1,7 +1,8 @@
 <template>
   <q-page>
-    <h4>Página de posts</h4>
-
+    <h4>
+    <TitleComponent/>{{ pagina }}
+  </h4>
     <div>
       <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
         <q-circular-progress
@@ -13,10 +14,23 @@
           class="q-ma-md"
         />
       </i>
-      <ul v-if="!carregando">
+      <div class="fa fa-spinner fa-spin flex flex-center" v-if="!carregando">
+
+        <q-input
+        style="max-width:600px; width: 50%;"
+        v-model="search"
+        filled
+        rounded
+        placeholder="Buscar post por título"
+      >
+        <template v-slot:append>
+          <q-icon name="search" />
+        </template>
+      </q-input>
+
         <div class="posts-container">
           <div
-            v-for="(post, index) in posts"
+            v-for="(post, index) in filteredPost"
             :key="index"
             style="width: 100%; max-width: 700px"
             class="post-card"
@@ -34,7 +48,7 @@
             </div>
           </div>
         </div>
-      </ul>
+      </div>
     </div>
   </q-page>
 </template>
@@ -44,14 +58,20 @@ import { defineComponent } from "vue";
 import { api } from "../boot/axios";
 import { ref, onMounted, watch, toRefs, nextTick, computed } from "vue";
 import { useStore } from "vuex";
+import TitleComponent from 'components/TitleComponent.vue'
 
 export default defineComponent({
   name: "PostsPage",
+  components: {
+    TitleComponent
+  },
   data() {
     return {
       posts: [],
       carregando: false,
-      url: "",
+      url: '',
+      pagina: 'posts',
+      search:''
     };
   },
   methods: {
@@ -88,6 +108,11 @@ export default defineComponent({
 
     this.loadData();
   },
+  computed:{
+    filteredPost() {
+      return this.posts.filter(post => post.title.includes(this.search))  // Filtrar posts pelo título
+    }
+  }
 });
 </script>
 

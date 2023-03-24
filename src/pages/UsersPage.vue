@@ -14,6 +14,18 @@
     </i>
 
     <div class="row justify-around items-center" v-if="!carregando">
+      <q-input
+        style="max-width:600px; width: 50%;"
+        v-model="search"
+        filled
+        rounded
+        placeholder="Buscar usuário pelo nome"
+      >
+        <template v-slot:append>
+          <q-icon name="search" />
+        </template>
+      </q-input>
+
       <div v-for="(user, index) in users" :key="index">
         <div class="q-pa-md">
           <q-card
