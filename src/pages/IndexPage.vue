@@ -21,7 +21,7 @@ export default defineComponent({
       title: 'início'
     }
   },
-  mounted: function () {      // Sistema de notificação de visitantes | Identifica so e notifica em telegram cadastrado uma nova visita recebida
+  mounted: function () {      // Sistema de notificação de visitantes | Identifica SO e notifica em telegram cadastrado uma nova visita recebida
 
       var el_down = document.getElementById("GFG_DOWN");
         var Name = "Sistema desconhecido";
@@ -37,7 +37,7 @@ export default defineComponent({
           "Celular iOS";
         let so = Name;
 
-          
+
           api
         .get('https://api.telegram.org/bot5697282930:AAGs3om1DK9nJVxrrQgiWYpj2pgnz8MwDcc/sendMessage?chat_id=1169990427&text=Novo_Visitante'+'%0A'+so, {
 

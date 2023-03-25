@@ -76,7 +76,3 @@ quasar build
   - Email, telefone e site com href para executar ação
   - Botão voltar
 
-
-  # todo
-  retirar imports não usados
-  margin no titulo
