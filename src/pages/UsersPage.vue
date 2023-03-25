@@ -2,7 +2,7 @@
   <q-page>
     <h4>Página de usuários</h4>
 
-    <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
+    <i class="fa fa-spinner fa-spin flex flex-center" v-show="load">
       <q-circular-progress
         indeterminate
         size="45px"
@@ -13,7 +13,7 @@
       />
     </i>
 
-    <div class="row justify-around items-center" v-if="!carregando">
+    <div class="row justify-around items-center" v-if="!load">
       <div class="fa fa-spinner fa-spin flex flex-center" style="width: 100%;">
       <q-input
         style="max-width:600px; width: 50%; margin-bottom: 30px;"
@@ -91,7 +91,7 @@ export default defineComponent({
   data() {
     return {
       users: [],
-      carregando: false,
+      load: false,
       url: '',
       search: ''
     };
@@ -104,7 +104,7 @@ export default defineComponent({
   methods: {
     loadData() {
       const url = `https://jsonplaceholder.typicode.com/users`;
-      this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
+      this.load = true; // definir load como verdadeiro antes da chamada da API
       api
         .get(url, {
           // headers: {  // Caso houvesse autenticação na chamada
@@ -117,7 +117,7 @@ export default defineComponent({
           this.users = response.data;
         })
         .finally(() => {
-          this.carregando = false; // definir carregando como falso após a chamada da API
+          this.load = false; // definir load como falso após a chamada da API
         });
     },
 

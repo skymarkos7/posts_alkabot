@@ -9,7 +9,7 @@
         label="Voltar"
     /></a>
 
-    <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
+    <i class="fa fa-spinner fa-spin flex flex-center" v-show="load">
       <q-circular-progress
         indeterminate
         size="45px"
@@ -20,7 +20,7 @@
       />
     </i>
 
-    <div class="row justify-around items-center" v-if="!carregando">
+    <div class="row justify-around items-center" v-if="!load">
       <div class="posts-container userdetails">
         <div style="width: 100%; max-width: 800px" class="post-card">
           <div class="post-details">
@@ -111,7 +111,7 @@ export default defineComponent({
       users: [],
       address: "",
       company: "",
-      carregando: false,
+      load: false,
     };
   },
   setup() {
@@ -123,7 +123,7 @@ export default defineComponent({
     loadData() {
       let id = this.$route.params.id;
       const url = `https://jsonplaceholder.typicode.com/users/${id}`;
-      this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
+      this.load = true; // definir load como verdadeiro antes da chamada da API
       api
         .get(url, {
           // headers: {  // Caso haja autenticação na chamada
@@ -138,7 +138,7 @@ export default defineComponent({
           this.company = response.data.company;
         })
         .finally(() => {
-          this.carregando = false; // definir carregando como falso após a chamada da API
+          this.load = false; // definir load como falso após a chamada da API
         });
     },
   },

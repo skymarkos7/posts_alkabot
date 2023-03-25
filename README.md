@@ -9,7 +9,8 @@
     - Notificação de visitantes: Telegram
   - Idioma:
     - Código em inglês
-    - Conteúdo da página em português
+    - Nome de arquivos inglês
+    - Conteúdo da página em português (Exceto dados da api)
     - Comentários português
   - Características:
     - Responsivo
@@ -57,10 +58,18 @@ quasar build
 # Telas
 ## Posts
  - Exibindo posts em um card
- - Botão para mostrar o post selecionado e seus comentários
+ - Botão para mostrar os comentários relacionados
+ - Filtro de busca
 
  ## Comentários
   - Exibe o post e seus comentários
+
  ## Usuários
   - Mostrando todas as infos de um usuário no mesmo card
   - Duas abas selecionáveis para separar dados de ENDEREÇO ou EMPRESA
+  - Botão expandir para mostrar infos do usuário
+  - Filtro de busca
+
+  ## Detalhes do usuário
+  - Card com efeito flutuante mostra infos do usuário
+  - Email, telefone e site com href para executar ação

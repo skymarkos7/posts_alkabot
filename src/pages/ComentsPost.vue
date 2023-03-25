@@ -10,7 +10,7 @@
     /></a>
 
     <div>
-      <i class="fa fa-spinner fa-spin flex flex-center" v-show="carregando">
+      <i class="fa fa-spinner fa-spin flex flex-center" v-show="load">
         <q-circular-progress
           indeterminate
           size="45px"
@@ -21,7 +21,7 @@
         />
       </i>
 
-      <div v-if="!carregando" class="q-pa-md row justify-center">
+      <div v-if="!load" class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 800px" class="post-card postp">
           <div class="post-details">
             <h5 class="post-title">{{ posts.title }}</h5>
@@ -58,7 +58,7 @@ export default defineComponent({
     return {
       comments: [],
       posts: [],
-      carregando: false,
+      load: false,
     };
   },
   methods: {
@@ -67,7 +67,7 @@ export default defineComponent({
       let id = this.$route.params.id; // Pegando o id do post pela url
 
       const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
-      this.carregando = true; // definir carregando como verdadeiro antes da chamada da API
+      this.load = true; // definir load como verdadeiro antes da chamada da API
       api
         .get(url, {
           // headers: {  // Caso haja autenticação na chamada
@@ -92,7 +92,7 @@ export default defineComponent({
           this.posts = response.data;
         })
         .finally(() => {
-          this.carregando = false; // definir carregando como falso após a chamada da API
+          this.load = false; // definir load como falso após a chamada da API
         });
     },
   },
