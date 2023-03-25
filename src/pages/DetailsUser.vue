@@ -138,7 +138,6 @@ export default defineComponent({
           // }
         })
         .then((response) => {
-          console.log(response.data);
 
           this.users = response.data;
           this.address = response.data.address;
@@ -150,7 +149,7 @@ export default defineComponent({
     },
   },
   mounted: function () {
-   
+
     this.loadData();
   },
 });

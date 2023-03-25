@@ -83,8 +83,7 @@ export default defineComponent({
           // }
         })
         .then((response) => {
-          console.log(response.data);
-
+          
           this.posts = response.data;
         })
         .finally(() => {

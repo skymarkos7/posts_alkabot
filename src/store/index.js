@@ -17,6 +17,10 @@ export default store(function (/* { ssrContext } */) {
     modules: {
       // example
     },
+    state:{
+      star: '2',
+      stars:[]
+    },
 
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only

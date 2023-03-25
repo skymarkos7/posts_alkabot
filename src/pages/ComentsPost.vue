@@ -67,7 +67,6 @@ export default defineComponent({
   },
   methods: {
     loadData() {
-      // console.log(this.$route.params.id);
       let id = this.$route.params.id; // Pegando o id do post pela url
 
       const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
@@ -79,7 +78,6 @@ export default defineComponent({
           // }
         })
         .then((response) => {
-          // console.log(response.data);
 
           this.comments = response.data;
         });
@@ -91,7 +89,6 @@ export default defineComponent({
           // }
         })
         .then((response) => {
-          console.log("post", response.data);
 
           this.posts = response.data;
         })
