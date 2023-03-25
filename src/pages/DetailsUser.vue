@@ -104,7 +104,7 @@
 <script>
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
-import { ref } from "vue"; // Usando apenas REF por enquanto
+import { ref } from "vue";
 import TitleComponent from "components/TitleComponent.vue";
 
 export default defineComponent({
@@ -130,7 +130,7 @@ export default defineComponent({
     loadData() {
       let id = this.$route.params.id;
       const url = `https://jsonplaceholder.typicode.com/users/${id}`;
-      this.load = true; // definir load como verdadeiro antes da chamada da API
+      this.load = true; // define load como verdadeiro antes da chamada da API
       api
         .get(url, {
           // headers: {  // Caso haja autenticação na chamada
@@ -145,18 +145,12 @@ export default defineComponent({
           this.company = response.data.company;
         })
         .finally(() => {
-          this.load = false; // definir load como falso após a chamada da API
+          this.load = false; // define load como falso após a chamada da API
         });
     },
   },
   mounted: function () {
-    // if (this.$route.query.payment_id) {
-    //   this.payment_id = this.$route.query.payment_id;
-    //   // window.location();
-    // } else {
-    //   window.location.href = '/';
-    // }
-
+   
     this.loadData();
   },
 });

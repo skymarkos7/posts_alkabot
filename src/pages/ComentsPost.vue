@@ -49,7 +49,6 @@
 <script>
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
-import { useStore } from "vuex";
 import TitleComponent from "components/TitleComponent.vue";
 
 export default defineComponent({

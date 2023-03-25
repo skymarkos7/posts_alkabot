@@ -55,7 +55,6 @@
 <script>
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
-import { ref, onMounted, watch, toRefs, nextTick, computed } from "vue";
 import { useStore } from "vuex";
 import TitleComponent from 'components/TitleComponent.vue'
 

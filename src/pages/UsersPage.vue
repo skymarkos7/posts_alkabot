@@ -33,11 +33,7 @@
       <div v-for="(user, index) in filteredUsers" :key="index">
         <div class="q-pa-md">
           <q-card
-            style="
-              background-color: #f4f8f9;
-              min-width: 300px;
-              min-height: 250px;
-            "
+
             class="card-user col-auto"
           >
             <q-card-section>
@@ -85,7 +81,7 @@
 <script>
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
-import { ref } from "vue"; 
+import { ref } from "vue";
 import TitleComponent from "src/components/TitleComponent.vue";
 
 export default defineComponent({
@@ -110,7 +106,7 @@ export default defineComponent({
   methods: {
     loadData() {
       const url = `https://jsonplaceholder.typicode.com/users`;
-      this.load = true; // definir load como verdadeiro antes da chamada da API
+      this.load = true; // define load como verdadeiro antes da chamada da API
       api
         .get(url, {
           // headers: {  // Caso houvesse autenticação na chamada
@@ -123,7 +119,7 @@ export default defineComponent({
           this.users = response.data;
         })
         .finally(() => {
-          this.load = false; // definir load como falso após a chamada da API
+          this.load = false; // define load como falso após a chamada da API
         });
     },
 
@@ -132,13 +128,7 @@ export default defineComponent({
     },
   },
   mounted: function () {
-    // if (this.$route.query.payment_id) {
-    //   this.payment_id = this.$route.query.payment_id;
-    //   // window.location();
-    // } else {
-    //   window.location.href = '/';
-    // }
-
+   
     this.loadData();
   },
   computed:{
@@ -158,6 +148,9 @@ export default defineComponent({
 .card-user {
   width: 100%;
   max-width: 250px;
+  background-color: #f4f8f9;
+              min-width: 310px;
+              min-height: 250px;
 }
 .users-container {
   display: flex;
