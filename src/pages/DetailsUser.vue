@@ -1,6 +1,8 @@
 <template>
   <q-page>
-    <h4>Página para detalhes de um usuário</h4>
+    <h4>
+      <TitleComponent/>{{ title }}
+    </h4>
 
     <a href="#/users" style="text-decoration: none"
       ><q-btn
@@ -103,15 +105,20 @@
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
 import { ref } from "vue"; // Usando apenas REF por enquanto
+import TitleComponent from "components/TitleComponent.vue";
 
 export default defineComponent({
   name: "DetailsUser",
+  components: {
+    TitleComponent
+  },
   data() {
     return {
       users: [],
-      address: "",
-      company: "",
+      address: '',
+      company: '',
       load: false,
+      title: 'detalhes de um usuário'
     };
   },
   setup() {

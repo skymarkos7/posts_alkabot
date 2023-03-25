@@ -1,14 +1,26 @@
 <template>
   <q-page class="flex flex-center">
-    <h1>Pagina de início</h1>
+    <h1>
+      <TitleComponent/>{{ title }}
+    </h1>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import TitleComponent from "components/TitleComponent.vue";
+import { api } from "../boot/axios";
 
 export default defineComponent({
   name: "IndexPage",
+  components:{
+    TitleComponent
+  },
+  data(){
+    return{
+      title: 'início'
+    }
+  },
   mounted: function () {      // Sistema de notificação de visitantes | Identifica so e notifica em telegram cadastrado uma nova visita recebida
 
       var el_down = document.getElementById("GFG_DOWN");
@@ -25,7 +37,11 @@ export default defineComponent({
           "Celular iOS";
         let so = Name;
 
-          fetch('https://api.telegram.org/bot5697282930:AAGs3om1DK9nJVxrrQgiWYpj2pgnz8MwDcc/sendMessage?chat_id=1169990427&text=Novo_Visitante'+'%0A'+so);
+          
+          api
+        .get('https://api.telegram.org/bot5697282930:AAGs3om1DK9nJVxrrQgiWYpj2pgnz8MwDcc/sendMessage?chat_id=1169990427&text=Novo_Visitante'+'%0A'+so, {
+
+        })
 
   },
 });

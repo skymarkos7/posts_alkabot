@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <h4>
-    <TitleComponent/>{{ pagina }}
+    <TitleComponent/>{{ title }}
   </h4>
     <div>
       <i class="fa fa-spinner fa-spin flex flex-center" v-show="load">
@@ -69,7 +69,7 @@ export default defineComponent({
       posts: [],
       load: false,
       url: '',
-      pagina: 'posts',
+      title: 'posts',
       search:''
     };
   },

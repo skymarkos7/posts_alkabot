@@ -1,6 +1,8 @@
 <template>
   <q-page>
-    <h4>Página de usuários</h4>
+    <h4>
+      <TitleComponent/>{{ title }}
+    </h4>
 
     <i class="fa fa-spinner fa-spin flex flex-center" v-show="load">
       <q-circular-progress
@@ -83,17 +85,21 @@
 <script>
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
-import { ref, onMounted, watch, toRefs, nextTick, computed } from "vue"; // Usando apenas REF por enquanto
-import { useStore } from "vuex";
+import { ref } from "vue"; 
+import TitleComponent from "src/components/TitleComponent.vue";
 
 export default defineComponent({
   name: "UsersPage",
+  components:{
+    TitleComponent
+  },
   data() {
     return {
       users: [],
       load: false,
       url: '',
-      search: ''
+      search: '',
+      title: 'usuários'
     };
   },
   setup() {

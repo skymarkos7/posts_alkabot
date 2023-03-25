@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <h4>Página de comentários</h4>
+    <h4><TitleComponent />{{ title }}</h4>
 
     <a href="#/posts" style="text-decoration: none"
       ><q-btn
@@ -50,15 +50,20 @@
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
 import { useStore } from "vuex";
+import TitleComponent from "components/TitleComponent.vue";
 
 export default defineComponent({
   name: "PostsPage",
+  components: {
+    TitleComponent,
+  },
   props: ["id"],
   data() {
     return {
       comments: [],
       posts: [],
       load: false,
+      title: 'comentários',
     };
   },
   methods: {
@@ -116,11 +121,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 // SCOPED permite aplicar estilisação nesta únicapágina
-.postp{
+.postp {
   border-radius: 15px;
   background: #f5f5f5;
-  box-shadow:  31px 31px 62px #d0d0d0,
-              -31px -31px 62px #ffffff;
+  box-shadow: 31px 31px 62px #d0d0d0, -31px -31px 62px #ffffff;
 }
 .posts-container {
   display: flex;
