@@ -21,6 +21,11 @@
   - Versionamento:
     - Commits feito em uma branch de desenvolvimento chamada develop
     - Merge com a master ao final do desenvolvimento
+    - Disponível em github pages (Botão home leva para raiz do repositório)
+      - https://skymarkos7.github.io/posts_alkabot/dist/spa/#/
+  - Hospedagem:
+    - https://alkabot.lourenco.club/  (Principal)
+    - Server: Hostigator
 
 ### **Comandos para rodar projeto localmente:**
 
