@@ -1,8 +1,6 @@
 <template>
   <q-page>
-    <h4>
-    <TitleComponent/>{{ title }}
-  </h4>
+    <h4 style="margin:30px"><TitleComponent />{{ title }}</h4>
     <div>
       <i class="fa fa-spinner fa-spin flex flex-center" v-show="load">
         <q-circular-progress
@@ -15,22 +13,22 @@
         />
       </i>
       <div class="fa fa-spinner fa-spin flex flex-center" v-if="!load">
-
         <q-input
-        style="max-width:600px; width: 50%; margin-bottom: 30px;"
-        v-model="search"
-        filled
-        rounded
-        placeholder="Buscar post por título"
-      >
-        <template v-slot:append>
-          <q-icon name="search" />
-        </template>
-      </q-input>
+          style="max-width: 600px; width: 50%; margin-bottom: 30px"
+          v-model="search"
+          filled
+          rounded
+          placeholder="Buscar post por título"
+        >
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
 
         <div class="posts-container">
           <div
-            v-for="(post, index) in filteredPost"  :key="index"
+            v-for="(post, index) in filteredPost"
+            :key="index"
             style="width: 100%; max-width: 700px"
             class="post-card"
           >
@@ -56,20 +54,20 @@
 import { defineComponent } from "vue";
 import { api } from "../boot/axios";
 import { useStore } from "vuex";
-import TitleComponent from 'components/TitleComponent.vue'
+import TitleComponent from "components/TitleComponent.vue";
 
 export default defineComponent({
   name: "PostsPage",
   components: {
-    TitleComponent
+    TitleComponent,
   },
   data() {
     return {
       posts: [],
       load: false,
-      url: '',
-      title: 'posts',
-      search:''
+      url: "",
+      title: "posts",
+      search: "",
     };
   },
   methods: {
@@ -83,7 +81,6 @@ export default defineComponent({
           // }
         })
         .then((response) => {
-          
           this.posts = response.data;
         })
         .finally(() => {
@@ -96,14 +93,15 @@ export default defineComponent({
     },
   },
   mounted: function () {
-
     this.loadData();
   },
-  computed:{
+  computed: {
     filteredPost() {
-      return this.posts.filter(post => post.title.toLowerCase().includes(this.search.toLowerCase()))  // Filtrar posts pelo título
-    }
-  }
+      return this.posts.filter((post) =>
+        post.title.toLowerCase().includes(this.search.toLowerCase())
+      ); // Filtrar posts pelo título
+    },
+  },
 });
 </script>
 

@@ -18,8 +18,10 @@ export default store(function (/* { ssrContext } */) {
       // example
     },
     state:{
-      star: '2',
-      stars:[]
+      
+    },
+    mutations:{
+
     },
 
     // enable strict mode (adds overhead!)

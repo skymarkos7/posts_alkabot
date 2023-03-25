@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <h4><TitleComponent />{{ title }}</h4>
+    <h4 style="margin:30px"><TitleComponent />{{ title }}</h4>
 
     <a href="#/posts" style="text-decoration: none"
       ><q-btn

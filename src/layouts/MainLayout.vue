@@ -70,13 +70,6 @@ const linksList = [
     icon: 'chat',
     href: '#/posts',
     target:"_self"
-  },
-  {
-    title: 'Favoritos',
-    caption: 'Posts favoritados',
-    icon: 'star',
-    link: '#/favorites',
-    target:"_self"
   }
 ]
 

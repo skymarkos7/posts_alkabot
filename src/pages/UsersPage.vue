@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <h4>
+    <h4 style="margin:30px">
       <TitleComponent/>{{ title }}
     </h4>
 
