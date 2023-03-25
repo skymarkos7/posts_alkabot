@@ -22,7 +22,7 @@
         v-model="search"
         filled
         rounded
-        placeholder="Buscar usuário pelo nome"
+        placeholder="Buscar usuário"
       >
         <template v-slot:append>
           <q-icon name="search" />
